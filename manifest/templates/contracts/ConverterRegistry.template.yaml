@@ -1,0 +1,37 @@
+# ConverterRegistry
+  - kind: ethereum/contract
+    name: {{name}}
+    network: {{network}}
+    source:
+      address: '{{address}}'
+      abi: ConverterRegistry
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Converter
+      abis:
+        - name: ConverterRegistry
+          file: ./abis/ConverterRegistry.json
+      eventHandlers:
+        - event: ConverterAnchorAdded(indexed address)
+          handler: handleConverterAnchorAdded
+        - event: ConverterAnchorRemoved(indexed address)
+          handler: handleConverterAnchorRemoved
+        - event: ConvertibleTokenAdded(indexed address,indexed address)
+          handler: handleConvertibleTokenAdded
+        - event: ConvertibleTokenRemoved(indexed address,indexed address)
+          handler: handleConvertibleTokenRemoved
+        - event: LiquidityPoolAdded(indexed address)
+          handler: handleLiquidityPoolAdded
+        - event: LiquidityPoolRemoved(indexed address)
+          handler: handleLiquidityPoolRemoved
+        - event: OwnerUpdate(indexed address,indexed address)
+          handler: handleOwnerUpdate
+        - event: SmartTokenAdded(indexed address)
+          handler: handleSmartTokenAdded
+        - event: SmartTokenRemoved(indexed address)
+          handler: handleSmartTokenRemoved
+      file: ./src/mappings/ConverterRegistry.ts

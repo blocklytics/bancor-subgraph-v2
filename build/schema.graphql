@@ -1,0 +1,116 @@
+type Converter @entity {
+  id: ID!
+  activated: Boolean!
+  anchor: String!
+  "Conversion fee in decimal format"
+  conversionFee: BigDecimal!
+  factory: String!
+  priceOracle: String
+  platform: PlatformStat!
+  type: BigInt!
+  version: BigInt!
+  createdAtTimestamp: BigInt!
+  createdAtTransaction: String!
+  createdAtBlockNumber: BigInt!
+  createdAtLogIndex: BigInt!
+  upgradedTo: Converter
+  upgradedFrom: Converter
+  numSwaps: BigInt!
+  balances: [ConverterBalance!]! @derivedFrom(field: "converter")
+  swaps: [Swap!]! @derivedFrom(field: "converter")
+  volumes: [VolumeStat!]! @derivedFrom(field: "converter")
+  poolTokens: [PoolToken!]! @derivedFrom(field: "converter")
+}
+
+type ConverterBalance @entity {
+  id: ID! # Converter - Token
+  converter: Converter!
+  "Reserve token"
+  token: Token!
+  "Ownership token"
+  poolToken: PoolToken
+  "Staked balance of reserve token"
+  stakedAmount: BigDecimal!
+  "Actual balance of reserve token"
+  balance: BigDecimal!
+  "Weight"
+  weight: BigDecimal!
+}
+
+type LiquidityProviderBalance @entity {
+  id: ID! # Account - PoolToken
+  provider: User!
+  poolToken: PoolToken!
+  # ownership: BigDecimal!
+  poolTokenAmount: BigDecimal!
+  # underlyingToken: Token!
+  # underlyingAmount: BigInt!
+}
+
+type VolumeStat @entity {
+  id: ID! # Converter - Token
+  converter: Converter
+  token: Token!
+  sellVolume: BigDecimal!
+  buyVolume: BigDecimal!
+  totalVolume: BigDecimal!
+  platform: PlatformStat!
+}
+
+type Token @entity {
+  id: ID!
+  name: String!
+  symbol: String!
+  decimals: BigInt!
+  converterVolumes: [VolumeStat!]! @derivedFrom(field: "token")
+}
+
+type PoolToken @entity {
+  id: ID!
+  converter: Converter!
+  name: String!
+  symbol: String!
+  decimals: BigInt!
+  supply: BigDecimal!
+  "Value of PoolToken, in terms of reserve token"
+  shareValue: BigDecimal!
+  "Value of PoolToken, in terms of ETH"
+  shareValueEth: BigDecimal!
+  # underlyingTokens: [ReserveToken!]! @derivedFrom(field: "poolToken")
+  underlyingToken: Token!
+}
+
+type User @entity {
+  id: ID!
+  swaps: [Swap!]! @derivedFrom(field: "trader")
+  liquidity: [LiquidityProviderBalance!]! @derivedFrom(field: "provider")
+}
+
+type Swap @entity {
+  id: ID! # Transaction hash - log index
+  converter: Converter!
+  "Conversion fee, paid in toToken"
+  conversionFee: BigDecimal!
+  fromToken: Token!
+  fromAmount: BigDecimal!
+  toToken: Token!
+  toAmount: BigDecimal!
+  "fromAmount div toAmount"
+  price: BigDecimal!
+  trader: User!
+  txTo: String!
+  txFrom: String!
+  createdAtTimestamp: BigInt!
+  createdAtTransaction: String!
+  createdAtBlockNumber: BigInt!
+  createdAtLogIndex: BigInt!
+}
+
+type PlatformStat @entity {
+  id: ID! # Always "Bancor"
+  numActiveConverters: BigInt!
+  numConvertersTracked: BigInt!
+  swaps: BigInt!
+  converters: [Converter!]! @derivedFrom(field: "platform")
+  converterVolumes: [VolumeStat!]! @derivedFrom(field: "platform")
+}

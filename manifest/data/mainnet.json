@@ -1,0 +1,73 @@
+{
+    "network": "mainnet",
+    "dataSources": {
+        "ConverterFactory2": [
+            {
+                "name": "ConverterFactory2",
+                "address": "0xc9cd0b17c887e27ae5cc2d8e040eb763232eb348",
+                "startBlock": 10566773
+            }
+        ],
+        "ConverterFactory1": [
+            {
+                "name": "ConverterFactory1",
+                "address": "0x3cc4a258aff14a88380ca3d9703d6bbfb7a8042e",
+                "startBlock": 9896983
+            },
+            {
+                "name": "ConverterFactory1",
+                "address": "0xbef6a44d3500fb314a88359a5791fcdcb104d259",
+                "startBlock": 9656637
+            },
+            {
+                "name": "ConverterFactory1",
+                "address": "0x4f2ed30be421c1dd089ab93e9a73ae763224fde7",
+                "startBlock": 9612180
+            },
+            {
+                "name": "ConverterFactory1",
+                "address": "0x52d7c77cd866a535e16d57b9d542cf0526f1ffa2",
+                "startBlock": 9325999
+            },
+            {
+                "name": "ConverterFactory1",
+                "address": "0xda96defa6e41ece0c45f9ada1db4503b018409a0",
+                "startBlock": 9247265
+            }
+        ],
+        "Upgraders": [
+            {
+                "name": "ConverterUpgrader",
+                "address": "0xcff01c40fa47faff359b6b31ebac86f7958be486",
+                "startBlock": 10566778
+            },
+            {
+                "name": "ConverterUpgrader",
+                "address": "0x430626f79ac4ecea6a4be20ad3d68965b36e0f31",
+                "startBlock": 10282552
+            },
+            {
+                "name": "ConverterUpgrader",
+                "address": "0x9eed814b155cc52ea24d5b3d1dbfa07efc3ac742",
+                "startBlock": 10272724
+            },
+            {
+                "name": "ConverterUpgrader",
+                "address": "0xc724bc5f3dd616c8fadb75a23c00c13880a6268f",
+                "startBlock": 9612187
+            },
+            {
+                "name": "ConverterUpgrader",
+                "address": "0xaebf1085dd9a0fa403a75399c956595e3a7c3d5c",
+                "startBlock": 5766221
+            }
+        ],
+        "Registries": [
+            {
+                "name": "ContractRegistry",
+                "address": "0x52ae12abe5d8bd778bd5397f99ca900624cfadd4",
+                "startBlock": 6563025
+            }
+        ]
+    }
+}

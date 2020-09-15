@@ -1,0 +1,38 @@
+# ConverterUpgrader
+  - kind: ethereum/contract
+    name: {{name}}-{{address}}
+    network: {{network}}
+    source:
+      address: '{{address}}'
+      abi: ConverterUpgrader
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Converter
+        - ConverterBalance
+      abis:
+        - name: ConverterUpgrader
+          file: ./abis/ConverterUpgrader.json
+        - name: ERC20Token
+          file: ./abis/ERC20Token.json
+        - name: LiquidityPoolV1Converter
+          file: ./abis/LiquidityPoolV1Converter.json
+        - name: LiquidityPoolV2Converter
+          file: ./abis/LiquidityPoolV2Converter.json
+        - name: Converter27
+          file: ./abis/Bancor/Converter27.json
+        - name: Converter25
+          file: ./abis/Bancor/Converter25.json
+        - name: Converter24
+          file: ./abis/Bancor/Converter24.json
+      eventHandlers:
+        - event: ConverterOwned(indexed address,indexed address)
+          handler: handleConverterOwned
+        - event: ConverterUpgrade(indexed address,indexed address)
+          handler: handleConverterUpgrade
+        - event: OwnerUpdate(indexed address,indexed address)
+          handler: handleOwnerUpdate
+      file: ./src/mappings/ConverterUpgrader/{{address}}.ts

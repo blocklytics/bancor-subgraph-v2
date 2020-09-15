@@ -1,0 +1,5 @@
+# ConverterFactory2
+{{#dataSources.ConverterFactory2}}
+  {{> ConverterFactory2.template.yaml}}
+{{/dataSources.ConverterFactory2}}
+# /ConverterFactory2

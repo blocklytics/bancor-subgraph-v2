@@ -1,0 +1,19 @@
+{
+    "network": "ropsten",
+    "dataSources": {
+        "Registries": [
+            {
+                "name": "ConverterRegistry",
+                "address": "0xf330be3cA34f79328c2448b02d8059F4a7B5B3f8",
+                "startBlock": 8359139
+            }
+        ],
+        "Factories": [
+            {
+                "name": "ConverterFactory",
+                "address": "0xFc31A0CD40f0DAb7286259c4f100AD15be543CAf",
+                "startBlock": 8359133
+            }
+        ]
+    }
+}

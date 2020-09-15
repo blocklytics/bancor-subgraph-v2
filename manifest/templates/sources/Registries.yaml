@@ -1,0 +1,6 @@
+# Registries
+{{#dataSources.Registries}}
+  {{!> ContractRegistry.template.yaml}}
+  {{!> ConverterRegistry.template.yaml}}
+{{/dataSources.Registries}}
+# /Registries

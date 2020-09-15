@@ -1,0 +1,5 @@
+# Upgraders
+{{#dataSources.Upgraders}}
+  {{> ConverterUpgrader.template.yaml}}
+{{/dataSources.Upgraders}}
+# /Upgraders

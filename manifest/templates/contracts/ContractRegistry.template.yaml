@@ -1,0 +1,23 @@
+# ContractRegistry
+  - kind: ethereum/contract
+    name: {{name}}
+    network: {{network}}
+    source:
+      address: '{{address}}'
+      abi: ContractRegistry
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ContractRegistry
+      abis:
+        - name: ContractRegistry
+          file: ./abis/ContractRegistry.json
+      eventHandlers:
+        - event: AddressUpdate(indexed bytes32,address)
+          handler: handleAddressUpdate
+        - event: OwnerUpdate(indexed address,indexed address)
+          handler: handleOwnerUpdate
+      file: ./src/mappings/ContractRegistry.ts

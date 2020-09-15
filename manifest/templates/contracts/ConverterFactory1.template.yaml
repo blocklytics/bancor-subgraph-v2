@@ -1,0 +1,31 @@
+# ConverterFactory1
+  - kind: ethereum/contract
+    name: {{name}}-{{address}}
+    network: {{network}}
+    source:
+      address: '{{address}}'
+      abi: ConverterFactory
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Converter
+      abis:
+        - name: ConverterFactory
+          file: ./abis/Bancor/{{name}}.json
+        - name: LiquidityPoolV1Converter
+          file: ./abis/LiquidityPoolV1Converter.json
+        - name: LiquidityPoolV2Converter
+          file: ./abis/LiquidityPoolV2Converter.json
+        - name: Converter27
+          file: ./abis/Bancor/Converter27.json
+        - name: Converter25
+          file: ./abis/Bancor/Converter25.json
+        - name: Converter24
+          file: ./abis/Bancor/Converter24.json
+      eventHandlers:
+        - event: NewConverter(indexed address,indexed address)
+          handler: handleNewConverter
+      file: ./src/mappings/ConverterFactory/{{address}}.ts
